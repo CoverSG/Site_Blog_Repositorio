@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Gabriel Gomes Cover</title>
+    <!-- importei a fonte do google, o professor falou que pode usar -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+     
+        :root {
+            --roxo-mais-claro: #EEEDFE;
+            --roxo-claro: #CECBF6;
+            --roxo-medio: #7F77DD;
+            --roxo-forte: #534AB7;
+            --roxo-escuro: #3C3489;
+            --roxo-texto: #26215C;
+
+            --bg-pagina: #EEEDFE;
+            --bg-card: #ffffff;
+            --texto-principal: #26215C;
+            --texto-secundario: #534AB7;
+            --borda-card: #CECBF6;
+
+            --tamanho-fonte: 16px;
+        }
+
+        body.dark-mode {
+            --bg-pagina: #1a1730;
+            --bg-card: #2a2550;
+            --texto-principal: #EEEDFE;
+            --texto-secundario: #CECBF6;
+            --borda-card: #534AB7;
+            --roxo-mais-claro: #1a1730;
+            --roxo-claro: #3C3489;
+            --roxo-forte: #7F77DD;
+            --roxo-escuro: #534AB7;
+            --roxo-texto: #EEEDFE;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-pagina);
+            font-family: 'Inter', 'Arial', sans-serif;
+            color: var(--roxo-texto);
+            font-size: var(--tamanho-fonte);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* transicao bonitinha pro dark mode */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+
+        .caixa-titulo {
+            background-color: var(--roxo-forte);
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .caixa-titulo h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .caixa-titulo p {
+            color: var(--roxo-claro);
+            font-size: 0.95rem;
+        }
+
+        .barra-acessibilidade {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .btn-acesso {
+            background-color: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.2s;
+        }
+
+        .btn-acesso:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .caixa-navegacao {
+            background-color: var(--roxo-escuro);
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: sticky; 
+            top: 0;
+            z-index: 100;
+        }
+
+        .caixa-navegacao a {
+            color: var(--roxo-mais-claro);
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        .caixa-navegacao a:hover,
+        .caixa-navegacao a.ativo {
+            background-color: var(--roxo-medio);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+        .conteudo-principal {
+            flex: 1; 
+            max-width: 860px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .pagina {
+            display: none;
+        }
+
+        .pagina.ativa {
+            display: block;
+        }
+
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        h2 {
+            color: var(--roxo-forte);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--roxo-claro);
+        }
+
+        h3 {
+            color: var(--roxo-escuro);
+            font-size: 1.15rem;
+            margin-bottom: 0.7rem;
+        }
+
+        body.dark-mode h2 {
+            color: var(--roxo-claro);
+            border-bottom-color: var(--roxo-forte);
+        }
+
+        body.dark-mode h3 {
+            color: var(--roxo-claro);
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            color: var(--texto-principal);
+        }
+
+
+        .boas-vindas {
+            background: linear-gradient(135deg, var(--roxo-forte), var(--roxo-medio));
+            border-radius: 12px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .boas-vindas h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            font-size: 1.8rem;
+        }
+
+        .boas-vindas p {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .grade-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .post-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda-card);
+            border-radius: 10px;
+            padding: 1.2rem;
+            border-left: 4px solid var(--roxo-forte);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(83, 74, 183, 0.15);
+        }
+
+        .post-card .data-post {
+            font-size: 0.78rem;
+            color: var(--roxo-medio);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .post-card h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .post-card p {
+            font-size: 0.88rem;
+            color: var(--texto-secundario);
+            margin: 0;
+        }
+
+
+        .foto-perfil-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .foto-placeholder {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--roxo-forte), var(--roxo-medio));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+            border: 4px solid var(--roxo-claro);
+            margin-bottom: 0.8rem;
+        }
+
+
+        ul.lista-experiencias {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.lista-experiencias li {
+            padding: 0.6rem 0 0.6rem 1.5rem;
+            border-bottom: 1px solid var(--borda-card);
+            position: relative;
+            color: var(--texto-principal);
+            line-height: 1.6;
+        }
+
+        ul.lista-experiencias li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--roxo-forte);
+            border-radius: 50%;
+        }
+
+        ul.lista-experiencias li:last-child {
+            border-bottom: none;
+        }
+
+        .tabela-curriculo {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .tabela-curriculo th {
+            background-color: var(--roxo-forte);
+            color: white;
+            padding: 0.7rem 1rem;
+            text-align: left;
+        }
+
+        .tabela-curriculo td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--borda-card);
+            color: var(--texto-principal);
+        }
+
+        .tabela-curriculo tr:nth-child(even) td {
+            background-color: var(--bg-pagina);
+        }
+
+ 
+        .grupo-campo {
+            margin-bottom: 1.2rem;
+        }
+
+        .grupo-campo label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--roxo-escuro);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .grupo-campo label {
+            color: var(--roxo-claro);
+        }
+
+        .grupo-campo input,
+        .grupo-campo textarea,
+        .grupo-campo select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1.5px solid var(--roxo-claro);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background-color: var(--bg-card);
+            color: var(--texto-principal);
+            transition: border-color 0.2s, background-color 0.3s;
+        }
+
+        .grupo-campo input:focus,
+        .grupo-campo textarea:focus,
+        .grupo-campo select:focus {
+            outline: none;
+            border-color: var(--roxo-forte);
+        }
+
+        .grupo-campo textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .msg-erro {
+            color: #c0392b;
+            font-size: 0.82rem;
+            margin-top: 0.3rem;
+            display: none; 
+        }
+
+        .campo-invalido input,
+        .campo-invalido textarea {
+            border-color: #e74c3c;
+        }
+
+        .campo-invalido .msg-erro {
+            display: block;
+        }
+
+        .btn-enviar {
+            background-color: var(--roxo-forte);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.2s, transform 0.1s;
+            width: 100%;
+        }
+
+        .btn-enviar:hover {
+            background-color: var(--roxo-escuro);
+            transform: translateY(-1px);
+        }
+
+        .btn-enviar:active {
+            transform: translateY(0);
+        }
+
+        .alerta-sucesso {
+            background-color: #d5f5e3;
+            border: 1px solid #27ae60;
+            border-radius: 8px;
+            padding: 1rem;
+            color: #1e8449;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+
+        .lista-receitas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-receita {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda-card);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card-receita:hover {
+            transform: translateY(-4px);
+            border-color: var(--roxo-forte);
+        }
+
+        .emoji-receita {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-receita h3 {
+            font-size: 0.95rem;
+        }
+
+
+        .subpagina-mousse {
+            display: none;
+        }
+
+        .subpagina-mousse.visivel {
+            display: block;
+        }
+
+        .lista-receitas-normal {
+            display: block;
+        }
+
+        .lista-receitas-normal.escondida {
+            display: none;
+        }
+
+        .btn-voltar {
+            background-color: transparent;
+            color: var(--roxo-forte);
+            border: 1.5px solid var(--roxo-forte);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-voltar:hover {
+            background-color: var(--roxo-forte);
+            color: white;
+        }
+
+
+        ol.ingredientes, ul.modo-preparo {
+            padding-left: 1.5rem;
+            line-height: 2;
+            color: var(--texto-principal);
+        }
+
+        ol.ingredientes li, ul.modo-preparo li {
+            margin-bottom: 0.3rem;
+        }
+
+        .tag-categoria {
+            display: inline-block;
+            background-color: var(--roxo-claro);
+            color: var(--roxo-escuro);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        body.dark-mode .tag-categoria {
+            background-color: var(--roxo-escuro);
+            color: var(--roxo-claro);
+        }
+
+
+        .rodape-site {
+            background-color: var(--roxo-escuro);
+            color: var(--roxo-claro);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-size: 0.82rem;
+            margin-top: auto;
+        }
+
+
+        @media (max-width: 600px) {
+            .caixa-titulo h1 {
+                font-size: 1.4rem;
+            }
+
+            .barra-acessibilidade {
+                position: static;
+                justify-content: center;
+                margin-top: 0.8rem;
+            }
+
+            .caixa-navegacao {
+                gap: 0.3rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .caixa-navegacao a {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.7rem;
+            }
+
+            .boas-vindas h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="caixa-titulo">
+        <h1>📚 Blog Gabriel Gomes Cover</h1>
+        <p>Estudante de Ciência da Computação — UPF 2026</p>
+
+        <div class="barra-acessibilidade">
+            <button class="btn-acesso" onclick="diminuirFonte()" title="Diminuir fonte">A-</button>
+            <button class="btn-acesso" onclick="aumentarFonte()" title="Aumentar fonte">A+</button>
+            <button class="btn-acesso" onclick="alternarDarkMode()" id="btn-dark">🌙 Dark</button>
+        </div>
+    </header>
+
+    <nav class="caixa-navegacao">
+        <a onclick="mostrarPagina('home')" id="nav-home" class="ativo">🏠 Home</a>
+        <a onclick="mostrarPagina('sobre')" id="nav-sobre">👤 Sobre Mim</a>
+        <a onclick="mostrarPagina('curriculo')" id="nav-curriculo">📄 Currículo</a>
+        <a onclick="mostrarPagina('contato')" id="nav-contato">✉️ Contato</a>
+        <a onclick="mostrarPagina('receitas')" id="nav-receitas">🍴 Receitas</a>
+    </nav>
+
+    <main class="conteudo-principal">
+
+
+        <section class="pagina ativa" id="pagina-home">
+
+            <div class="boas-vindas">
+                <h2>Bem-vindo ao meu blog! 👋</h2>
+                <p>
+                     Me chamo Gabriel e sou estudante do 1º semestre de Ciência da Computação na UPF.
+                    Aqui vou postar sobre programação e minha jornada na faculdade.
+            </div>
+
+            <h2>📰 Últimas Postagens</h2>
+
+            <div class="grade-posts">
+
+                <article class="post-card">
+                    <p class="data-post">📅 1 de maio, 2026</p>
+                    <h3>For e While</h3>
+                    <p>O professor ensinou for e while.</p>
+                </article>
+
+                <article class="post-card">
+                    <p class="data-post">📅 03 de maio, 2026</p>
+                    <h3>Primeiro site</h3>
+                    <p>Fiz um site utilizando de html e css.</p>
+                </article>
+
+                <article class="post-card">
+                    <p class="data-post">📅 28 de maio, 2026</p>
+                    <h3>CSS</h3>
+                    <p>Interessante, legal.</p>
+                </article>
+
+                <article class="post-card">
+                    <p class="data-post">📅 30 de maio, 2026</p>
+                    <h3>Por que escolhi Ciência da Computação?</h3>
+                    <p>Sempre gostei de jogos e quero aprender a criar os meu própio jogo.</p>
+                </article>
+
+                <article class="post-card">
+                    <p class="data-post">📅 1 de junho, 2026</p>
+                    <h3>Git e GitHub.</h3>
+                    <p>Aprendi a usar Git e Github e a importancia deles na programação.</p>
+                </article>
+
+                <article class="post-card">
+                    <p class="data-post">📅 05 de junho, 2026</p>
+                    <h3>Linux</h3>
+                    <p>Baixei o Linux Mint e estou aprendendo a usá-lo.</p>
+                </article>
+
+            </div>
+        </section>
+
+
+        <section class="pagina" id="pagina-sobre">
+
+            <h2>👤 Sobre Mim</h2>
+
+            <div class="card">
+                <div class="foto-perfil-container">
+                    <div class="foto-placeholder">👨‍💻</div>
+                    <p><strong>Gabriel Gomes Cover</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--texto-secundario);">Passo Fundo, RS — Brasil</p>
+                </div>
+
+                <h3>Minha trajetória</h3>
+                <p>
+                    Me chamo Gabriel e tenho 18 anos. Nasci em Porto Alegre e cresci em Passo Fundo, Rio Grande do Sul.
+                    Sempre gostei de tecnologia, por isso escolhi fazer o curso de Ciencia da Computação.
+                </p>
+                <p>
+                    Em 2026 ingressei no curso de Ciência da Computação na Universidade de Passo Fundo.
+                    Ainda estou no começo, mas já aprendi muita coisa: HTML, CSS, lógica de programação,
+                    um pouco de JavaScript.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🎮 Interesses</h3>
+                <p>
+                   Gosto de Jogos, principalmente de Historia, RPGs e jogos de estratégia. 
+                   Tenho interesse em criar meu própio jogo um dia, porém ainda estou aprendendo.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🎓 Vida Acadêmica</h3>
+                <p>
+                    Estou no 1º semestre do curso de Bacharelado em Ciência da Computação no Instituto de Tecnologia (ITEC) da UPF.
+                    As disciplinas que mais gosto são Desenvolvimento para Web e Algoritmos e Programação.
+                </p>
+            </div>
+
+        </section>
+
+
+       
+        <section class="pagina" id="pagina-curriculo">
+
+            <h2>📄 Currículo</h2>
+
+            <div class="card">
+                <h3>💼 Experiências</h3>
+                <ul class="lista-experiencias">
+                    <li>Estagiário na fabrica de softwares do LCI da UPF (2026 - presente)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🎓 Formação Acadêmica</h3>
+                <table class="tabela-curriculo">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Instituição</th>
+                            <th>Período</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bacharelado em Ciência da Computação</td>
+                            <td>UPF — Passo Fundo/RS</td>
+                            <td>2026 - 2029 (prev.)</td>
+                            <td>✅ Cursando</td>
+                        </tr>
+                        <tr>
+                            <td>Ensino Médio</td>
+                            <td>Colégio Estadual Antônio Balbino</td>
+                            <td>2023 - 2025</td>
+                            <td>✅ Concluído</td>
+                        </tr>
+                        <tr>
+                            <td>Inglês Avançado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>🛠️ Competências Técnicas</h3>
+                <table class="tabela-curriculo">
+                    <thead>
+                        <tr>
+                            <th>Habilidade</th>
+                            <th>Nível</th>
+                            <th>Obs.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTML5 / CSS3</td>
+                            <td>⭐⭐⭐☆☆ Intermediário</td>
+                            <td>Aprendendo na faculdade</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>⭐⭐☆☆☆ Básico</td>
+                            <td>Ainda aprendendo</td>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td>⭐⭐☆☆ Básico</td>
+                            <td>Lógica de programação</td>
+                        </tr>
+                        <tr>
+                            <td>Git / GitHub</td>
+                            <td>⭐⭐⭐☆☆ Básico</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Linux (Mint)</td>
+                            <td>⭐⭐☆☆☆ Iniciante</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft Office</td>
+                            <td>⭐⭐⭐⭐☆ Avançado</td>
+                            <td>Word, Excel, PowerPoint</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+
+        <section class="pagina" id="pagina-contato">
+
+            <h2>✉️ Contato</h2>
+
+            <div class="card">
+                <p>Quer falar comigo? Preencha o formulário abaixo!</p>
+
+                <form id="formulario-contato" onsubmit="validarFormulario(event)">
+
+                    <div class="grupo-campo" id="campo-nome">
+                        <label for="nome">Nome completo *</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva">
+                        <span class="msg-erro">Por favor, informe seu nome.</span>
+                    </div>
+
+                    <div class="grupo-campo" id="campo-email">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
+                        <span class="msg-erro">Por favor, informe um e-mail válido.</span>
+                    </div>
+
+                    <div class="grupo-campo" id="campo-assunto">
+                        <label for="assunto">Assunto *</label>
+                        <select id="assunto" name="assunto">
+                            <option value="">-- Selecione um assunto --</option>
+                            <option value="duvida">Dúvida sobre programação</option>
+                            <option value="parceria">Parceria / Projeto</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <span class="msg-erro">Selecione um assunto.</span>
+                    </div>
+
+                    <div class="grupo-campo" id="campo-mensagem">
+                        <label for="mensagem">Mensagem *</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..."></textarea>
+                        <span class="msg-erro">A mensagem precisa ter pelo menos 10 caracteres.</span>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">📨 Enviar Mensagem</button>
+
+                    <div class="alerta-sucesso" id="sucesso-contato">
+                        ✅ Mensagem enviada com sucesso! Em breve entrarei em contato.
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
+
+
+       
+        <section class="pagina" id="pagina-receitas">
+
+            <h2>🍴 Receitas Favoritas</h2>
+
+            <div class="lista-receitas-normal" id="lista-principal-receitas">
+
+                <p style="margin-bottom: 1.5rem;">Receitas que eu gosto.</p>
+
+                <div class="lista-receitas">
+                    <div class="card-receita" onclick="abrirMousse()">
+                        <span class="emoji-receita">🍮</span>
+                        <h3>Mousse de Maracujá</h3>
+                        <p style="font-size: 0.82rem; color: var(--texto-secundario); margin-top: 0.4rem;">⭐ Favorita! Ver receita →</p>
+                    </div>
+
+                    <div class="card-receita">
+                        <span class="emoji-receita">🍕</span>
+                        <h3>Pizza Caseira</h3>
+                        <p style="font-size: 0.82rem; color: var(--texto-secundario); margin-top: 0.4rem;">Faço toda sexta</p>
+                    </div>
+
+                    <div class="card-receita">
+                        <span class="emoji-receita">🍪</span>
+                        <h3>Cookies de Chocolate</h3>
+                        <p style="font-size: 0.82rem; color: var(--texto-secundario); margin-top: 0.4rem;">Pra estudar na madrugada</p>
+                    </div>
+
+                    <div class="card-receita">
+                        <span class="emoji-receita">🥗</span>
+                        <h3>Salada Caesar</h3>
+                        <p style="font-size: 0.82rem; color: var(--texto-secundario); margin-top: 0.4rem;">Quando preciso comer saudável</p>
+                    </div>
+
+                    <div class="card-receita">
+                        <span class="emoji-receita">🍝</span>
+                        <h3>Macarrão ao Alho e Óleo</h3>
+                        <p style="font-size: 0.82rem; color: var(--texto-secundario); margin-top: 0.4rem;">Rápido e gostoso!</p>
+                    </div>
+
+                    <div class="card-receita">
+                        <span class="emoji-receita">☕</span>
+                        <h3>Café Gelado Cremoso</h3>
+                        <p style="font-size: 0.82rem; color: var(--texto-secundario); margin-top: 0.4rem;">Combustível do programador</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subpagina-mousse" id="subpagina-mousse">
+
+                <button class="btn-voltar" onclick="voltarReceitas()">← Voltar para receitas</button>
+
+                <article class="card">
+                    <span class="tag-categoria">🍮 Sobremesa</span>
+                    <h2 style="border-bottom: none; margin-bottom: 0.4rem;">Mousse de Maracujá</h2>
+                    <p style="color: var(--texto-secundario); font-size: 0.88rem; margin-bottom: 1.2rem;">
+                        ⏱️ Preparo: 20 min &nbsp;|&nbsp; 🕐 Geladeira: 4 horas &nbsp;|&nbsp; 🍽️ Porções: 6 pessoas
+                    </p>
+                    <p>Uma das sobremesas mais clássicas e gostosas do Brasil. A receita é da minha avó e nunca falha!</p>
+                </article>
+
+                <div class="card">
+                    <h3>📋 Ingredientes</h3>
+                    <ol class="ingredientes">
+                        <li>1 lata de leite condensado (395g)</li>
+                        <li>1 lata de creme de leite (300g)</li>
+                        <li>1 lata de suco de maracujá concentrado (300ml)</li>
+                        <li>1 envelope de gelatina sem sabor incolor (12g)</li>
+                        <li>5 colheres de sopa de água quente (para dissolver a gelatina)</li>
+                        <li>Sementes de maracujá para decorar (opcional, mas deixa bonito)</li>
+                        <li>1 pitada de sal (sim! realça o sabor do maracujá)</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h3>👨‍🍳 Modo de Preparo</h3>
+                    <ul class="modo-preparo">
+                        <li><strong>Passo 1 —</strong> Dissolva a gelatina nas 5 colheres de água quente, mexendo bem até não ter grumos. Reserve e deixe esfriar um pouco.</li>
+                        <li><strong>Passo 2 —</strong> No liquidificador, bata o leite condensado com o creme de leite por 1 minuto.</li>
+                        <li><strong>Passo 3 —</strong> Adicione o suco de maracujá e a pitada de sal. Bata por mais 30 segundos.</li>
+                        <li><strong>Passo 4 —</strong> Com o liquidificador ainda ligado (em velocidade baixa), adicione a gelatina dissolvida aos poucos.</li>
+                        <li><strong>Passo 5 —</strong> Despeje em uma tigela grande ou em tacinhas individuais.</li>
+                        <li><strong>Passo 6 —</strong> Leve à geladeira por no mínimo 4 horas (o ideal é deixar de um dia para o outro).</li>
+                        <li><strong>Passo 7 —</strong> Antes de servir, decore com as sementes de maracujá.</li>
+                    </ul>
+                </div>
+
+               
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="rodape-site">
+        <p>
+            &copy; 2026 Gabriel Gomes Cover — 
+            Desenvolvido para a disciplina de Desenvolvimento para Web · Prof. Leonardo Costella & Pablo Leon Rodrigues · UPF/ITEC
+        </p>
+    </footer>
+
+
+    
+    <script>
+      
+        function mostrarPagina(nomePagina) {
+            var todasPaginas = document.querySelectorAll('.pagina');
+            for (var i = 0; i < todasPaginas.length; i++) {
+                todasPaginas[i].classList.remove('ativa');
+            }
+
+            var todosLinks = document.querySelectorAll('.caixa-navegacao a');
+            for (var j = 0; j < todosLinks.length; j++) {
+                todosLinks[j].classList.remove('ativo');
+            }
+
+            document.getElementById('pagina-' + nomePagina).classList.add('ativa');
+
+            document.getElementById('nav-' + nomePagina).classList.add('ativo');
+
+            window.scrollTo(0, 0);
+        }
+
+
+
+        var darkModeAtivo = false; 
+
+        function alternarDarkMode() {
+            var btnDark = document.getElementById('btn-dark');
+
+            if (darkModeAtivo) {
+                document.body.classList.remove('dark-mode');
+                btnDark.textContent = '🌙 Dark';
+                darkModeAtivo = false;
+            } else {
+                document.body.classList.add('dark-mode');
+                btnDark.textContent = '☀️ Light';
+                darkModeAtivo = true;
+            }
+        }
+
+
+        var tamanhoFonteAtual = 16; 
+
+        function aumentarFonte() {
+            if (tamanhoFonteAtual < 24) { 
+                tamanhoFonteAtual = tamanhoFonteAtual + 2;
+                document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonteAtual + 'px');
+            }
+        }
+
+        function diminuirFonte() {
+            if (tamanhoFonteAtual > 12) { 
+                tamanhoFonteAtual = tamanhoFonteAtual - 2;
+                document.documentElement.style.setProperty('--tamanho-fonte', tamanhoFonteAtual + 'px');
+            }
+        }
+
+
+       
+        function validarFormulario(evento) {
+            
+            evento.preventDefault();
+
+            var tudoOk = true; 
+
+            var nome = document.getElementById('nome').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var assunto = document.getElementById('assunto').value;
+            var mensagem = document.getElementById('mensagem').value.trim();
+
+            var campNome = document.getElementById('campo-nome');
+            if (nome === '') {
+                campNome.classList.add('campo-invalido');
+                tudoOk = false;
+            } else {
+                campNome.classList.remove('campo-invalido');
+            }
+
+            var campEmail = document.getElementById('campo-email');
+            if (email === '' || !email.includes('@') || !email.includes('.')) {
+                campEmail.classList.add('campo-invalido');
+                tudoOk = false;
+            } else {
+                campEmail.classList.remove('campo-invalido');
+            }
+
+            var campAssunto = document.getElementById('campo-assunto');
+            if (assunto === '') {
+                campAssunto.classList.add('campo-invalido');
+                tudoOk = false;
+            } else {
+                campAssunto.classList.remove('campo-invalido');
+            }
+
+            var campMensagem = document.getElementById('campo-mensagem');
+            if (mensagem.length < 10) {
+                campMensagem.classList.add('campo-invalido');
+                tudoOk = false;
+            } else {
+                campMensagem.classList.remove('campo-invalido');
+            }
+
+            if (tudoOk) {
+                document.getElementById('sucesso-contato').style.display = 'block';
+                document.getElementById('formulario-contato').reset(); // limpa o form
+
+                setTimeout(function() {
+                    document.getElementById('sucesso-contato').style.display = 'none';
+                }, 4000);
+            }
+        }
+
+
+        
+        function abrirMousse() {
+            document.getElementById('lista-principal-receitas').classList.add('escondida');
+            document.getElementById('subpagina-mousse').classList.add('visivel');
+            window.scrollTo(0, 0);
+        }
+
+        function voltarReceitas() {
+            document.getElementById('subpagina-mousse').classList.remove('visivel');
+            document.getElementById('lista-principal-receitas').classList.remove('escondida');
+        }
+
+    </script>
+
+</body>
+</html>
