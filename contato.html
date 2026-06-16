@@ -1,0 +1,49 @@
+      <section class="pagina" id="pagina-contato">
+
+            <h2>✉️ Contato</h2>
+
+            <div class="card">
+                <p>Quer falar comigo? Preencha o formulário abaixo!</p>
+
+                <form id="formulario-contato" onsubmit="validarFormulario(event)">
+
+                    <div class="grupo-campo" id="campo-nome">
+                        <label for="nome">Nome completo *</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva">
+                        <span class="msg-erro">Por favor, informe seu nome.</span>
+                    </div>
+
+                    <div class="grupo-campo" id="campo-email">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
+                        <span class="msg-erro">Por favor, informe um e-mail válido.</span>
+                    </div>
+
+                    <div class="grupo-campo" id="campo-assunto">
+                        <label for="assunto">Assunto *</label>
+                        <select id="assunto" name="assunto">
+                            <option value="">-- Selecione um assunto --</option>
+                            <option value="duvida">Dúvida sobre programação</option>
+                            <option value="parceria">Parceria / Projeto</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <span class="msg-erro">Selecione um assunto.</span>
+                    </div>
+
+                    <div class="grupo-campo" id="campo-mensagem">
+                        <label for="mensagem">Mensagem *</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..."></textarea>
+                        <span class="msg-erro">A mensagem precisa ter pelo menos 10 caracteres.</span>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">📨 Enviar Mensagem</button>
+
+                    <div class="alerta-sucesso" id="sucesso-contato">
+                        ✅ Mensagem enviada com sucesso! Em breve entrarei em contato.
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
+
